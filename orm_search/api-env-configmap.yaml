@@ -1,0 +1,12 @@
+apiVersion: v1
+data:
+  POSTGRES_DB: oreilly
+  POSTGRES_PASSWORD: hunter2
+  POSTGRES_URL: postgres:5432
+  POSTGRES_USER: oreilly
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: orm-api-api-env
+  name: api-env

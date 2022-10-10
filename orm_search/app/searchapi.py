@@ -1,7 +1,6 @@
 from flask import Flask, jsonify, Response, current_app
 from flask_sqlalchemy import SQLAlchemy
 from config import Config
-import pprint
 import os
 import psycopg2
 import json
@@ -9,7 +8,6 @@ import json
 app = Flask(__name__)
 app.config.from_object(Config)
 db = SQLAlchemy(app)
-pp = pprint.PrettyPrinter(width=55, compact=True)
 
 class Work(db.Model):
     __tablename__ = 'works'

@@ -1,0 +1,10 @@
+apiVersion: v1
+data:
+  PASSWORD: hunter2
+  USER: oreilly
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: postgres-postgres-env
+  name: postgres-env
