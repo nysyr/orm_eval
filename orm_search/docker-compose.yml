@@ -10,6 +10,7 @@ services:
       - "5432"
   ormapi:
     image: "nysyr/orm_search:latest"
+    #image: "nysyr/orm_search:searchtest"
     env_file:
      - ./api.env
     ports: 

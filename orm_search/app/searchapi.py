@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, Response, current_app
+from flask import Flask, jsonify, request, current_app
 from flask_sqlalchemy import SQLAlchemy
 from config import Config
 import os
@@ -26,6 +26,20 @@ def handle_work():
     works =  db.session.execute(db.select(Work.work_id, Work.title, Work.authors).order_by(Work.title)).all()
     results = [
         {
+            "work_id": work.work_id,
+            "title": work.title,
+            "authors": work.authors
+        } for work in works
+    ]
+    return results
+
+@app.route('/catalog/search', methods=['GET'])
+def search_work():
+    topic = request.args.get('topic')
+    works = Work.query.filter(Work.title.like("%" + topic + "%")).all()
+    results = [
+        {
+            "query": topic,
             "work_id": work.work_id,
             "title": work.title,
             "authors": work.authors
