@@ -1,0 +1,22 @@
+version: "3"
+services:
+  postgres:
+    image: "registry.hub.docker.com/caedus41/oreilly-cloud-engineer-postgres:latest"
+    volumes: 
+      - db-data:/var/lib/postgres/data
+    env_file:
+      - ./postgres.env
+    expose:
+      - "5432"
+  orm_api:
+    image: "nysyr/orm_search:latest"
+    env_file:
+     - ./api.env
+    ports: 
+      - "8000:5000"
+    links: 
+      - postgres
+    depends_on:
+      - postgres
+volumes: 
+  db-data:
